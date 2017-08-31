@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Walk The Line</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <script>
+            function taxFunction(lumpSumInvestmentMonth, lumpSumInvestmentAmount, debitOrderStartMonth, debitOrderAmount) {
+                
+                alert("Total Investment Amount is: ");
+                var totalInvestmentAmount = 0.00;
+                var monthsToEndOfTaxYear = 0;
+                if(debitOrderStartMonth < 3)
+                {
+                    monthsToEndOfTaxYear = 3 - debitOrderStartMonth;
+                    totalInvestmentAmount = (monthsToEndOfTaxYear * debitOrderAmount) + lumpSumInvestmentAmount;
+                }
+                else
+                {
+                    monthsToEndOfTaxYear = 15 - debitOrderStartMonth;
+                    totalInvestmentAmount = (monthsToEndOfTaxYear * debitOrderAmount) + lumpSumInvestmentAmount;
+                }
+                
+                alert("Total Investment Amount is: " + totalInvestmentAmount);
+                return false;
+            }
+            
+            function test()
+            {
+                alert("Test Works");
+            }
+            //document.getElementById("demo").innerHTML = myFunction(4, 3);
+        </script>
+        
+        <form>
+            Lump Sum Investment Month12:<br>
+            <input type="number" name="lumpSumInvestmentMonth"><br>
+            Lump Sum Investment Amount:<br>
+            <input type="number" step="0.01" name="lumpSumInvestmentAmount"><br>
+            Debit Order Start Month:<br>
+            <input type="number" name="debitOrderStartMonth"><br>
+            Debit Order Amount:<br>
+            <input type="number" step="0.01" name="debitOrderStartAmount"><br>
+            <!--<input type="submit" value="Submit" onclick="test()">-->
+            <input type="submit" value="Submit" onclick="taxFunction(document.getElementByName('lumpSumInvestmentMonth').value,document.getElementById('lumpSumInvestmentAmount').value,document.getElementByName('debitOrderStartMonth').value,document.getElementById('debitOrderStartAmount').value)">
+        </form>
+        
+        <div>TODO write content</div>
+    </body>
+</html>
